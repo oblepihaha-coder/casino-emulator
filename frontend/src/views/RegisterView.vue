@@ -1,16 +1,16 @@
 <script>
-import HeaderComponent from '@/components/HeaderComponent.vue'
-import LogicComponent from '@/components/LogicComponent.vue'
-import FooterComponent from '@/components/FooterComponent.vue'
 import NavComponent from '@/components/NavComponent.vue'
+import HeaderComponent from '@/components/HeaderComponent.vue'
+import FooterComponent from '@/components/FooterComponent.vue'
+import RegisterComponent from '@/components/RegisterComponent.vue'
 
 export default {
-  name: 'MainView',
+  name: 'RegisterView',
   components: {
-    HeaderComponent,
-    LogicComponent,
-    FooterComponent,
     NavComponent,
+    HeaderComponent,
+    FooterComponent,
+    RegisterComponent,
   },
 }
 </script>
@@ -18,11 +18,6 @@ export default {
 <template>
   <NavComponent />
   <HeaderComponent />
-  <main>
-    <LogicComponent />
-  </main>
+  <RegisterComponent />
   <FooterComponent />
 </template>
-
-<style scoped>
-</style>
