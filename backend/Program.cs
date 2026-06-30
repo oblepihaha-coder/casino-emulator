@@ -171,15 +171,25 @@ app.MapPost("/auth/login", async (LoginDto dto, AppDbContext db, IConfiguration 
 })
 .WithTags("Auth");
 
-app.MapGet("/auth/me", (ClaimsPrincipal principal) =>
-    Results.Ok(new
+app.MapGet("/auth/me", async (ClaimsPrincipal principal, AppDbContext db) =>
+{
+    var id = int.Parse(principal.FindFirstValue(ClaimTypes.NameIdentifier)!);
+
+    var user = await db.Users.FindAsync(id);
+
+    if (user == null)
+        return Results.NotFound();
+
+    return Results.Ok(new
     {
-        Id = principal.FindFirstValue(ClaimTypes.NameIdentifier),
-        Name = principal.FindFirstValue(ClaimTypes.Name),
-        Role = principal.FindFirstValue(ClaimTypes.Role)
-    }))
-    .RequireAuthorization()
-    .WithTags("Auth");
+        user.Id,
+        user.Name,
+        user.Role,
+        user.Balance
+    });
+})
+.RequireAuthorization()
+.WithTags("Auth");
 
 app.MapGet("/users", async (AppDbContext db) =>
     await db.Users.ToListAsync()

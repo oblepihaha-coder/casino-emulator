@@ -8,7 +8,6 @@ import NavComponent from '@/components/NavComponent.vue';
 
 <template>
     <NavComponent />
-    <HeaderComponent />
     <main>
         <AboutComponent />
     </main>
