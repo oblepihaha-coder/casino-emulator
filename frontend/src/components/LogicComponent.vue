@@ -207,13 +207,16 @@ export default {
 .slot-machine {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 20px;
 
   padding: 20px;
   border: 4px solid gold;
   border-radius: 15px;
   width: fit-content;
+  max-width: 100%;
   margin: 0 auto;
+
   background: rgba(0,0,0,0.6);
   box-shadow: 0 0 20px gold;
 }
@@ -262,5 +265,31 @@ export default {
 .balance {
   color: #00ffe5;
   font-weight: bold;
+}
+
+@media (max-width: 768px) {
+  .slot-machine {
+    gap: 12px;
+    padding: 15px;
+  }
+
+  .slot-reel {
+    width: 140px;
+    height: 140px;
+    font-size: 75px;
+  }
+}
+
+@media (max-width: 480px) {
+  .slot-machine {
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .slot-reel {
+    width: 110px;
+    height: 110px;
+    font-size: 60px;
+  }
 }
 </style>
